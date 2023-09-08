@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Estilos gerais da página */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Barra de navegação lateral */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Inicialmente oculto */
+        width: 250px;
+        height: 100%;
+        background-color: #333;
+        color: #fff;
+        transition: left 0.3s;
+      }
+
+      .sidebar a {
+        padding: 20px;
+        text-decoration: none;
+        color: #fff;
+        display: block;
+      }
+
+      .sidebar a:hover {
+        background-color: #555;
+      }
+
+      /* Barra de navegação superior */
+      .topbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 60px;
+        background-color: #fff;
+        color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        text-align: center; /* Centraliza o conteúdo */
+      }
+
+      /* Estilização para o logotipo */
+      .logo {
+        max-height: 50px; /* Define a altura máxima para a imagem */
+        margin: 10px auto; /* Centraliza verticalmente */
+        display: block;
+      }
+
+      /* Botão para abrir o sidebar */
+      #openSidebarBtn {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 30px; /* Tamanho maior do ícone */
+        color: #4b4b4b; /* Cor do ícone */
+        transition: font-size 0.3s; /* Adiciona transição de tamanho */
+      }
+
+      /* Adiciona efeito de escala no hover */
+      #openSidebarBtn:hover {
+        transform: scale(1.2); /* Aumenta o tamanho em hover */
+      }
+
+      /* Conteúdo principal */
+      .content {
+        margin-top: 60px;
+        margin-left: 0; /* Inicialmente sem margem */
+        padding: 20px;
+        transition: margin-left 0.3s;
+      }
+
+      /* Estilos para a seção com texto e foto */
+      .section-with-text-and-photo {
+        display: flex; /* Cria um layout de duas colunas */
+        align-items: center; /* Centraliza verticalmente */
+        margin-top: 30px; /* Espaço entre a seção anterior */
+      }
+
+      .section-with-text-and-photo .text {
+        flex: 1; /* Coluna de texto ocupa 1 parte do espaço disponível */
+        padding: 20px;
+      }
+
+      .section-with-text-and-photo .photo {
+        flex: 1; /* Coluna de foto ocupa 1 parte do espaço disponível */
+        padding: 20px;
+        text-align: center; /* Centraliza a foto horizontalmente */
+      }
+
+      .section-with-text-and-photo img {
+        max-width: 100%; /* Garante que a foto não exceda a largura da coluna */
+        height: auto;
+      }
+
+      /* Estilos adicionais para o conteúdo da página */
+      /* Adicione seus estilos específicos aqui */
+
+      /* Estilos para a página de aterragem */
+      .landing-page {
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+
+      .landing-page h1 {
+        font-size: 24px;
+        color: #333;
+      }
+
+      .landing-page p {
+        font-size: 16px;
+        color: #555;
+      }
+
+      /* Estilos para a tabela de preços */
+      .price-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .price-table th,
+      .price-table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+      }
+
+      .price-card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .price-card img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Estilos para a seção de carrossel de fotos */
+      .photo-carousel {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .photo-carousel h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      /* Estilos para a capa do Facebook */
+      .facebook-cover {
+        background-image: url("img/capa.png");
+        background-size: cover;
+        background-position: center;
+        height: 300px; /* Ajuste a altura conforme necessário */
+        position: relative;
+        text-align: center;
+      }
+
+      .facebook-cover h1 {
+        color: #fff;
+        font-size: 36px;
+        margin-top: 100px; /* Ajuste a margem superior conforme necessário */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Estilos para o rodapé */
+      .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 50px 0;
+      }
+
+      .footer h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .footer p {
+        font-size: 14px;
+      }
+
+      .footer a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      /* Estilize o ícone do WhatsApp conforme necessário */
+      .footer img {
+        width: 32px;
+        height: 32px;
+        margin-left: 10px;
+      }
+
+      /* Estilos para os cards de botões */
+      .button-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .button-card h2 {
+        font-size: 24px;
+        color: #333;
+      }
+
+      .button-card a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+      }
+
+      .button-card a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <!-- Conteúdo do sidebar -->
+      <a href="#">Home</a>
+      <a href="index.html">Home</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="#">Serviços</a>
+      <a href="contatos.html">Contatos</a>
+    </div>
+
+    <div class="topbar">
+      <!-- Botão para abrir o sidebar -->
+      <div id="openSidebarBtn">&#9776;</div>
+      <!-- Conteúdo da barra de navegação superior -->
+      <img src="img/4.png" alt="Logo da Fábrica de Blocos" class="logo" />
+    </div>
+
+    <!-- Conteúdo do carrossel e do conteúdo principal -->
+    <div class="content">
+      <!-- Seção com o carrossel de imagens -->
+      <div class="photo-carousel">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Slides do Carrossel -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="img/carossel.jpg"
+                alt="Imagem 1"
+                class="d-block w-100"
+              />
+              <!-- Adicione as classes d-block e w-100 -->
+            </div>
+            <!-- Adicione mais slides se tiver mais imagens -->
+          </div>
+
+          <!-- Controles do Carrossel -->
+          <a
+            class="carousel-control-prev"
+            href="#myCarousel"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#myCarousel"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Capa do Facebook -->
+      <div class="facebook-cover">
+        <img src="img/4.png" alt="" />
+      </div>
+
+      <!-- Conteúdo principal da página -->
+      <div class="landing-page">
+        <h1>Bem-vindo à GV BLOCOS</h1>
+        <p>
+          Somos a GV Blocos e Pré Moldados, uma referência em qualidade e
+          excelência na fabricação de blocos de concreto e elementos
+          pré-moldados.
+        </p>
+        <p>
+          Explore nossa variedade de produtos e descubra como podemos atender às
+          suas necessidades de construção.
+        </p>
+      </div>
+
+      <!-- Seção com texto e foto -->
+      <div class="section-with-text-and-photo">
+        <div class="text">
+          <h2>Compromisso com a Qualidade</h2>
+          <p>
+            Nosso compromisso inabalável com a qualidade é o que nos diferencia.
+            Cada bloco e elemento pré-moldado que sai de nossa fábrica é
+            produzido com materiais de primeira qualidade e atende aos mais
+            rigorosos padrões da indústria.
+          </p>
+        </div>
+        <div class="photo">
+          <img src="img/foto.jpg" alt="Foto da Equipe" />
+        </div>
+      </div>
+      <!-- Seção com texto e foto -->
+      <div class="section-with-text-and-photo">
+        <div class="photo">
+          <img src="img/vibrablocos.jpg" alt="Foto da Equipe" />
+        </div>
+        <div class="text">
+          <h2>Tecnologia de Precisão:</h2>
+          <p>
+            A escolha de máquinas e ferramentas apropriadas é fundamental para
+            garantir que os blocos de concreto produzidos atendam às
+            especificações técnicas necessárias. Um dos principais benefícios de
+            investir em equipamentos adequados é a uniformidade na produção.
+            Máquinas de alta qualidade asseguram que os blocos tenham dimensões
+            precisas, o que é essencial para garantir que encaixem perfeitamente
+            durante a construção.
+          </p>
+        </div>
+      </div>
+      <!-- Seção com texto e foto -->
+      <div class="section-with-text-and-photo">
+        <div class="text">
+          <h2>Entregas eficientes</h2>
+          <p>
+            A GV Blocos é uma empresa que se destaca no mercado de construção
+            civil não apenas pela qualidade de seus produtos, mas também pela
+            eficiência nas entregas. Com uma trajetória sólida e um compromisso
+            inabalável com seus clientes, a GV Blocos se tornou um exemplo de
+            como a logística bem planejada pode fazer a diferença no setor.
+          </p>
+        </div>
+        <div class="photo">
+          <img src="img/foto.jpg" alt="Foto da Equipe" />
+        </div>
+      </div>
+
+      <!-- Mais seções com texto e foto aqui -->
+
+      <!-- Cards de Botões -->
+      <div class="button-card">
+        <h2>Confira nosso catálogo</h2>
+        <a href="catalogo.html">Catálogo</a>
+      </div>
+
+      <!-- Nova Seção do Footer -->
+      <div class="footer-section">
+        <footer class="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Endereço:</h4>
+                <p>Rua da Amostra, 1234<br />Cidade da Amostra, Estado</p>
+              </div>
+              <div class="col-md-6 text-right">
+                <h4>Contate-nos:</h4>
+                <!-- Ícone do WhatsApp -->
+                <a
+                  href="https://api.whatsapp.com/send?phone=SEUNUMERODEWHATSAPP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="icone-whatsapp.png" alt="Ícone do WhatsApp" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const openSidebarBtn = document.getElementById("openSidebarBtn");
+      const sidebar = document.querySelector(".sidebar");
+      const content = document.querySelector(".content");
+
+      openSidebarBtn.addEventListener("click", () => {
+        if (sidebar.style.left === "-250px") {
+          sidebar.style.left = "0";
+          content.style.marginLeft = "250px";
+        } else {
+          sidebar.style.left = "-250px";
+          content.style.marginLeft = "0";
+        }
+      });
+    </script>
+  </body>
+</html>
