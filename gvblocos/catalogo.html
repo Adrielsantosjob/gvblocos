@@ -60,7 +60,7 @@
         top: 0;
         right: 0;
         left: 0;
-        height: 60px;
+        height: 80px;
         background-color: #fff;
         color: #333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -73,6 +73,13 @@
         left: 10px;
         top: 10px;
         cursor: pointer;
+        font-size: 50px;
+        color: #3b3b3b;
+        transition: font-size 0.1s;
+      }
+
+      #openSidebarBtn:hover {
+        color: #c98900;
       }
 
       /* Conteúdo principal */
@@ -86,41 +93,49 @@
       /* Estilos adicionais para o conteúdo da página */
       /* Adicione seus estilos específicos aqui */
 
-      /* Estilos para a lista de vendas em formato de cartões */
-      .sales-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
+      /* Estilos para os cards de preço */
+      .price-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 80px;
+        text-align: center;
+        margin: 20px;
+        width: 300px;
       }
 
-      .sales-card {
-        flex: 1;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        text-align: center; /* Centraliza o conteúdo */
-        transition: transform 0.2s; /* Adiciona uma transição suave de escala */
-        cursor: pointer; /* Altera o cursor para um apontador */
+      .price-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
       }
 
-      .sales-card:hover {
-        transform: scale(
-          1.05
-        ); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+      .price-amount {
+        font-size: 36px;
+        color: #007bff; /* Cor de destaque inspirada no Xbox */
+        margin-bottom: 10px;
       }
 
-      /* Estilos para a página de aterragem */
-      .landing-page {
-        display: none; /* Oculta a seção de aterragem */
+      .price-description {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 20px;
       }
 
-      /* Estilos para as imagens dos produtos */
-      .product-image {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px; /* Espaço abaixo da imagem */
+      .btn {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
       }
     </style>
   </head>
@@ -136,35 +151,36 @@
 
     <div class="topbar">
       <!-- Botão para abrir o sidebar -->
-      <div id="openSidebarBtn">&#9776; Abrir Sidebar</div>
+      <div id="openSidebarBtn">&#9776;</div>
       <!-- Conteúdo da barra de navegação superior -->
     </div>
 
-    <div class="content">
-      <!-- Lista de Vendas em Formato de Cartões -->
-      <div class="sales-cards">
-        <!-- Cartão de Venda 1 -->
-        <div class="sales-card">
-          <img src="img/1.png" alt="Produto 1" class="product-image" />
-          <h2>Produto 1</h2>
-          <p>Descrição do Produto 1. Preço: R$ X</p>
-          <button>Comprar</button>
-        </div>
-        <!-- Cartão de Venda 2 -->
-        <div class="sales-card">
-          <img src="img/2.png" alt="Produto 2" class="product-image" />
-          <h2>Produto 2</h2>
-          <p>Descrição do Produto 2. Preço: R$ Y</p>
-          <button>Comprar</button>
-        </div>
-        <!-- Cartão de Venda 3 -->
-        <div class="sales-card">
-          <img src="img/3.png" alt="Produto 3" class="product-image" />
-          <h2>Produto 3</h2>
-          <p>Descrição do Produto 3. Preço: R$ Z</p>
-          <button>Comprar</button>
-        </div>
-        <!-- Adicione mais cartões de venda conforme necessário -->
+    <!-- Lista de Preços -->
+    <div class="price-cards-container d-flex flex-wrap justify-content-center">
+      <div class="price-card">
+        <div class="price-title">Bloco de 10</div>
+        <div class="price-amount">R$2,50</div>
+        <div class="price-description">9X19X39CM</div>
+        <img src="img/2.png" alt="Imagem do Plano Básico" />
+        <button class="btn">Orçamento</button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="price-card">
+        <div class="price-title">Bloco de 15</div>
+        <div class="price-amount">R$2,60</div>
+        <div class="price-description">14X19X39CM</div>
+        <img src="img/3.png" alt="Imagem do Plano Padrão" />
+        <button class="btn">Orçamento</button>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="price-card">
+        <div class="price-title">Boco de 20</div>
+        <div class="price-amount">R$2,90</div>
+        <div class="price-description">19X19X39CM</div>
+        <img src="img/1.png" alt="Imagem do Plano Premium" />
+        <button class="btn">Orçamento</button>
       </div>
     </div>
 
@@ -185,3 +201,4 @@
     </script>
   </body>
 </html>
+
