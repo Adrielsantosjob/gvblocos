@@ -24,13 +24,15 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
+        background-color: #001347; /* Cor de fundo inspirada no Xbox */
+        color: #fff; /* Cor do texto inspirada no Xbox */
       }
 
       /* Barra de navegação lateral */
       .sidebar {
         position: fixed;
         top: 0;
-        left: -250px; /* Inicialmente oculto */
+        left: -250px;
         width: 250px;
         height: 100%;
         background-color: #333;
@@ -55,18 +57,18 @@
         top: 0;
         right: 0;
         left: 0;
-        height: 60px;
-        background-color: #fff;
-        color: #333;
+        height: 80px;
+        background-color: #ffffff; /* Cor de destaque inspirada no Xbox */
+        color: #fff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 1;
-        text-align: center; /* Centraliza o conteúdo */
+        text-align: center;
       }
 
       /* Estilização para o logotipo */
       .logo {
-        max-height: 50px; /* Define a altura máxima para a imagem */
-        margin: 10px auto; /* Centraliza verticalmente */
+        max-height: 50px;
+        margin: 10px auto;
         display: block;
       }
 
@@ -76,64 +78,79 @@
         left: 10px;
         top: 10px;
         cursor: pointer;
-        font-size: 30px; /* Tamanho maior do ícone */
-        color: #4b4b4b; /* Cor do ícone */
-        transition: font-size 0.3s; /* Adiciona transição de tamanho */
+        font-size: 50px;
+        color: #3b3b3b;
+        transition: font-size 0.1s;
       }
 
-      /* Adiciona efeito de escala no hover */
       #openSidebarBtn:hover {
-        transform: scale(1.2); /* Aumenta o tamanho em hover */
+        color: #c98900;
       }
 
       /* Conteúdo principal */
       .content {
         margin-top: 60px;
-        margin-left: 0; /* Inicialmente sem margem */
+        margin-left: 0;
         padding: 20px;
         transition: margin-left 0.3s;
       }
 
       /* Estilos para a seção com texto e foto */
       .section-with-text-and-photo {
-        display: flex; /* Cria um layout de duas colunas */
-        align-items: center; /* Centraliza verticalmente */
-        margin-top: 30px; /* Espaço entre a seção anterior */
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
       }
 
       .section-with-text-and-photo .text {
-        flex: 1; /* Coluna de texto ocupa 1 parte do espaço disponível */
+        flex: 1;
         padding: 20px;
       }
 
       .section-with-text-and-photo .photo {
-        flex: 1; /* Coluna de foto ocupa 1 parte do espaço disponível */
+        flex: 1;
         padding: 20px;
-        text-align: center; /* Centraliza a foto horizontalmente */
+        text-align: center;
       }
 
       .section-with-text-and-photo img {
-        max-width: 100%; /* Garante que a foto não exceda a largura da coluna */
+        max-width: 100%;
         height: auto;
       }
 
       /* Estilos adicionais para o conteúdo da página */
-      /* Adicione seus estilos específicos aqui */
 
       /* Estilos para a página de aterragem */
       .landing-page {
-        background-color: #f0f0f0;
+        background-color: #0054d1; /* Cor de destaque inspirada no Xbox */
         padding: 20px;
+        color: #fff;
       }
 
       .landing-page h1 {
         font-size: 24px;
-        color: #333;
+        color: #fff;
       }
 
       .landing-page p {
         font-size: 16px;
-        color: #555;
+        color: #fff;
+      }
+
+      /* Adicione esta regra de mídia para responsividade */
+      @media (max-width: 768px) {
+        .price-cards-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+        }
+
+        .price-card {
+          flex: 1;
+          margin: 10px;
+          max-width: 300px;
+        }
       }
 
       /* Estilos para a tabela de preços */
@@ -141,6 +158,7 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
+        color: #000; /* Cor do texto na tabela */
       }
 
       .price-table th,
@@ -150,16 +168,31 @@
         border: 1px solid #ccc;
       }
 
+      /* Estilos para os cards de preço */
+      .price-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        width: 300px;
+        color: #000; /* Cor do texto nos cards de preço */
+      }
+
+      .price-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
       .price-card {
         border: 1px solid #ccc;
         padding: 20px;
-        margin-top: 20px;
+        margin: 10px;
         text-align: center;
-      }
-
-      .price-card img {
-        max-width: 100%;
-        height: auto;
+        width: 300px;
       }
 
       /* Estilos para a seção de carrossel de fotos */
@@ -173,12 +206,57 @@
         margin-bottom: 20px;
       }
 
+      /* Estilos para os cards de preço */
+      .price-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        width: 300px;
+      }
+
+      .price-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .price-amount {
+        font-size: 36px;
+        color: #007bff; /* Cor de destaque inspirada no Xbox */
+        margin-bottom: 10px;
+      }
+
+      .price-description {
+        font-size: 14px;
+        color: #777;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
       /* Estilos para a capa do Facebook */
       .facebook-cover {
         background-image: url("gvblocos/img/capa.png");
         background-size: cover;
         background-position: center;
-        height: 300px; /* Ajuste a altura conforme necessário */
+        height: 300px;
         position: relative;
         text-align: center;
       }
@@ -186,7 +264,7 @@
       .facebook-cover h1 {
         color: #fff;
         font-size: 36px;
-        margin-top: 100px; /* Ajuste a margem superior conforme necessário */
+        margin-top: 100px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
 
@@ -225,11 +303,13 @@
         padding: 20px;
         margin-top: 20px;
         text-align: center;
+        background-color: #002b86; /* Cor de destaque inspirada no Xbox */
+        color: #fff;
       }
 
       .button-card h2 {
         font-size: 24px;
-        color: #333;
+        color: #fff;
       }
 
       .button-card a {
@@ -254,8 +334,6 @@
       <a href="#">Home</a>
       <a href="index.html">Home</a>
       <a href="gvblocos/catalogo.html">Catálogo</a>
-     
-      
     </div>
 
     <div class="topbar">
@@ -274,7 +352,15 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
-                src="gvblocos/img/carossel.jpg"
+                src="gvblocos/img/carossel1.jpg"
+                alt="Imagem 1"
+                class="d-block w-100"
+              />
+              <!-- Adicione as classes d-block e w-100 -->
+            </div>
+            <div class="carousel-item active">
+              <img
+                src="gvblocos/img/carossel1.jpg"
                 alt="Imagem 1"
                 class="d-block w-100"
               />
@@ -302,6 +388,37 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Próximo</span>
           </a>
+        </div>
+      </div>
+
+      <!-- Lista de Preços -->
+      <div
+        class="price-cards-container d-flex flex-wrap justify-content-center"
+      >
+        <div class="price-card">
+          <div class="price-title">Bloco de 10</div>
+          <div class="price-amount">R$2,50</div>
+          <div class="price-description">9X19X39CM</div>
+          <img src="gvblocos/img/2.png" alt="Imagem do Plano Básico" />
+          <button class="btn">Orçamento</button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="price-card">
+          <div class="price-title">Bloco de 15</div>
+          <div class="price-amount">R$2,60</div>
+          <div class="price-description">14X19X39CM</div>
+          <img src="gvblocos/img/3.png" alt="Imagem do Plano Padrão" />
+          <button class="btn">Orçamento</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="price-card">
+          <div class="price-title">Boco de 20</div>
+          <div class="price-amount">R$2,90</div>
+          <div class="price-description">19X19X39CM</div>
+          <img src="gvblocos/img/1.png" alt="Imagem do Plano Premium" />
+          <button class="btn">Orçamento</button>
         </div>
       </div>
 
@@ -379,7 +496,7 @@
       <!-- Cards de Botões -->
       <div class="button-card">
         <h2>Confira nosso catálogo</h2>
-        <a href="gvblocos/catalogo.html">Catálogo</a>
+        <a href="catalogo.html">Catálogo</a>
       </div>
 
       <!-- Nova Seção do Footer -->
@@ -389,7 +506,10 @@
             <div class="row">
               <div class="col-md-6">
                 <h4>Endereço:</h4>
-                <p>Rua da Amostra, 1234<br />Cidade da Amostra, Estado</p>
+                <p>
+                  Rua Pedro Malaquias Pinto, 113, Jardim Alice<br />Governador
+                  Valadares, MG
+                </p>
               </div>
               <div class="col-md-6 text-right">
                 <h4>Contate-nos:</h4>
